@@ -5,6 +5,10 @@ project(mini_sort)
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 
+if (NOT CMAKE_BUILD_TYPE)
+    set(CMAKE_BUILD_TYPE Debug CACHE STRING "Build type" FORCE)
+endif()
+
 # --------------
 # directories
 # --------------
@@ -44,3 +48,17 @@ target_link_libraries(mini_sort
     PRIVATE
     mini_sort_lib
 )
+
+
+# --------------
+# tests
+# --------------
+
+add_executable(test_config
+    ${TEST_DIR}/test_config.c
+)
+
+target_link_libraries(test_config
+    PRIVATE
+    mini_sort_lib
+)   
