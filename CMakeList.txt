@@ -1,0 +1,46 @@
+cmake_minimum_required(VERSION 3.10)
+
+project(mini_sort)
+
+set(CMAKE_C_STANDARD 11)
+set(CMAKE_C_STANDARD_REQUIRED ON)
+
+# --------------
+# directories
+# --------------
+
+set(INC_DIR include)
+set(SRC_DIR src)
+set(APP_DIR app)
+set(TEST_DIR tests)
+
+# --------------
+# library
+# --------------
+
+set(LIB_SOURCES
+    ${SRC_DIR}/config.c
+    ${SRC_DIR}/input.c
+    ${SRC_DIR}/compare.c
+    ${SRC_DIR}/sort.c
+)
+
+add_library(mini_sort_lib STATIC ${LIB_SOURCES})
+
+target_include_directories(mini_sort_lib
+    PUBLIC
+    ${INC_DIR}
+)
+
+# --------------
+# main_executable
+# --------------
+
+add_executable(mini_sort 
+    ${APP_DIR}/main.c
+)
+
+target_link_libraries(mini_sort
+    PRIVATE
+    mini_sort_lib
+)
