@@ -13,9 +13,9 @@ LineList *linelist_create(void);
 
 void linelist_destroy(LineList *lst);
 
-void linelist_read_stdin(LineList *lst, const char *filename);
+void linelist_read_stdin(LineList *lst);
 
-void linelist_read_file(LineList *lst);
+void linelist_read_file(LineList *lst, const char *filename);
 
 // void linelist_add(LineList *lst, char *line);
 
