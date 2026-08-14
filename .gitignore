@@ -8,3 +8,5 @@ tests/
 *.o
 
 *.exe
+
+*.txt

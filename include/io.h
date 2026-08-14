@@ -1,7 +1,10 @@
-#ifndef INPUT_H
-#define INPUT_H
+#ifndef IO_H
+#define IO_H
 
 #include <stdio.h>
+
+#define MAX_CAPACITY 1000
+#define MAX_LINE_LENGTH 1024
 
 typedef struct {
     char **data;
@@ -17,11 +20,7 @@ void linelist_read_stdin(LineList *lst);
 
 void linelist_read_file(LineList *lst, const char *filename);
 
-// void linelist_add(LineList *lst, char *line);
-
-// char *read_line_from_stdin(LineList *lst);
-
-// char *read_line_from_file(LineList *lst);
+void linelist_print_lines(LineList *lst);
 
 // void resize
 

@@ -24,7 +24,7 @@ set(TEST_DIR tests)
 
 set(LIB_SOURCES
     ${SRC_DIR}/config.c
-    ${SRC_DIR}/input.c
+    ${SRC_DIR}/io.c
     ${SRC_DIR}/compare.c
     ${SRC_DIR}/sort.c
 )
@@ -62,3 +62,12 @@ target_link_libraries(test_config
     PRIVATE
     mini_sort_lib
 )   
+
+add_executable(test_io
+    ${TEST_DIR}/test_io.c
+)
+
+target_link_libraries(test_io
+    PRIVATE
+    mini_sort_lib
+)
