@@ -94,6 +94,7 @@ void linelist_read_file(LineList *lst, const char *filename)
 
 void linelist_print_lines(LineList *lst)
 {
+    printf("\n===============\n");
     for (int i = 0; i < lst->size; i++) 
         printf("%s\n", lst->data[i]);
 }

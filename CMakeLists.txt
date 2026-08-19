@@ -71,3 +71,12 @@ target_link_libraries(test_io
     PRIVATE
     mini_sort_lib
 )
+
+add_executable(test_sort
+    ${TEST_DIR}/test_sort.c
+)
+
+target_link_libraries(test_sort
+    PRIVATE
+    mini_sort_lib
+)

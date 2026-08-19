@@ -6,10 +6,10 @@
 
 #include "compare.h"
 
-static Comparator cmp_numeric(const void *a, const void *b)
+static int cmp_numeric(const void *a, const void *b)
 {
-    double x = atof((const char *)a);
-    double y = atof((const char *)b);
+    double x = atof(*(const char **)a);
+    double y = atof(*(const char **)b);
     if (x == y)
         return 0;
     else if (x > y)
@@ -18,10 +18,10 @@ static Comparator cmp_numeric(const void *a, const void *b)
         return -1;
 }
 
-static Comparator cmp_numeric_reverse(const void *a, const void *b)
+static int cmp_numeric_reverse(const void *a, const void *b)
 {
-    double x = atof((const char *)a);
-    double y = atof((const char *)b);
+    double x = atof(*(const char **)a);
+    double y = atof(*(const char **)b);
     if (x == y)
         return 0;
     else if (x > y)
@@ -30,20 +30,20 @@ static Comparator cmp_numeric_reverse(const void *a, const void *b)
         return 1;
 }
 
-static Comparator cmp_dictionary(const void *a, const void *b)
+static int cmp_dictionary(const void *a, const void *b)
 {
-    return strcmp((const char *)a, (const char *)b);
+    return strcmp(*(const char **)a, *(const char **)b);
 }
 
-static Comparator cmp_dictionary_reverse(const void *a, const void *b)
+static int cmp_dictionary_reverse(const void *a, const void *b)
 {
-    return -strcmp((const char *)a, (const char *)b);
+    return -strcmp(*(const char **)a, *(const char **)b);
 }
 
-static Comparator cmp_dictionary_foldcase(const void *a, const void *b)
+static int cmp_dictionary_foldcase(const void *a, const void *b)
 {
-    const char *s = (const char *)a;
-    const char *t = (const char *)b;
+    const char *s = *(const char **)a;
+    const char *t = *(const char **)b;
     
     while (*s && *t && tolower(*s) == tolower(*t))
         s++, t++;
@@ -51,15 +51,15 @@ static Comparator cmp_dictionary_foldcase(const void *a, const void *b)
     if (*s == *t)
         return 0;
     
-    if (*s < *t)
+    if (tolower(*s) < tolower(*t))
         return -1;
     return 1;
 }
 
-static Comparator cmp_dictionary_foldcase_reverse(const void *a, const void *b)
+static int cmp_dictionary_foldcase_reverse(const void *a, const void *b)
 {
-    const char *s = (const char *)a;
-    const char *t = (const char *)b;
+    const char *s = *(const char **)a;
+    const char *t = *(const char **)b;
     
     while (*s && *t && tolower(*s) == tolower(*t))
         s++, t++;
@@ -67,7 +67,7 @@ static Comparator cmp_dictionary_foldcase_reverse(const void *a, const void *b)
     if (*s == *t)
         return 0;
     
-    if (*s < *t)
+    if (tolower(*s) < tolower(*t))
         return 1;
     return -1;
 }
